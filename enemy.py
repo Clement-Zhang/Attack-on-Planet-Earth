@@ -1,17 +1,17 @@
-import pygame
 import math
-import entity
-import constants
+from mob import Mob
+from constants import static
+from constants import dynamic
 import random
 
-class Enemy(entity.Entity):
+class Enemy(Mob):
     def __init__(self, players, *sprite_groups):
         super().__init__()
         self.players = players
-        self.image = entity.enemy_block_img
+        self.image = dynamic.ENEMY_IMG
         self.rect = self.image.get_rect()
-        self.rect.centerx = random.randrange(25, constants.WIDTH-25)
-        self.rect.centery = random.randrange(25, constants.HEIGHT-25)
+        self.rect.centerx = random.randrange(25, static.WIDTH-25)
+        self.rect.centery = random.randrange(25, static.HEIGHT-25)
         for sprite_group in sprite_groups:
             sprite_group.add(self)
 
@@ -37,5 +37,6 @@ class Enemy(entity.Entity):
         unit_y = dist_y/hypot
         self.rect.centerx += unit_x*4
         self.rect.centery += unit_y*4
+        
     def update(self):
         self.move()
