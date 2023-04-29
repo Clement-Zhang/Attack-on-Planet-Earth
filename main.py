@@ -1,14 +1,14 @@
 import pygame
 import random
-from constants import static
+import constants.static
 
 pygame.init()
-screen = pygame.display.set_mode((static.WIDTH, static.HEIGHT))
+screen = pygame.display.set_mode((constants.static.WIDTH, constants.static.HEIGHT))
 pygame.display.set_caption("Extra Space Invaders")
 clock = pygame.time.Clock()
 running = 1
 
-import constants
+import constants.dynamic
 from player import Player
 from enemy import Enemy
 

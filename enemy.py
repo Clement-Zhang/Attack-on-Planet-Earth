@@ -1,17 +1,17 @@
 import math
 from mob import Mob
-from constants import static
-from constants import dynamic
+import constants.static
+import constants.dynamic
 import random
 
 class Enemy(Mob):
     def __init__(self, players, *sprite_groups):
         super().__init__()
         self.players = players
-        self.image = dynamic.ENEMY_IMG
+        self.image = constants.dynamic.ENEMY_IMG
         self.rect = self.image.get_rect()
-        self.rect.centerx = random.randrange(25, static.WIDTH-25)
-        self.rect.centery = random.randrange(25, static.HEIGHT-25)
+        self.rect.centerx = random.randrange(25, constants.static.WIDTH-25)
+        self.rect.centery = random.randrange(25, constants.static.HEIGHT-25)
         for sprite_group in sprite_groups:
             sprite_group.add(self)
 

@@ -1,15 +1,15 @@
 import pygame
 import math
 from mob import Mob
-from constants import static
-from constants import dynamic
+import constants.dynamic
+import constants.static
 
 class Player(Mob):
     def __init__(self, *sprite_groups):
         super().__init__()
-        self.image = dynamic.PLAYER_IMG
+        self.image = constants.dynamic.PLAYER_IMG
         self.rect = self.image.get_rect()
-        self.rect.center = (static.WIDTH/2, static.HEIGHT/2)
+        self.rect.center = (constants.static.WIDTH/2, constants.static.HEIGHT/2)
         for sprite_group in sprite_groups:
             sprite_group.add(self)
 
