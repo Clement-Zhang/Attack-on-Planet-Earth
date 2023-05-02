@@ -73,4 +73,3 @@ while running:
     pygame.display.flip()
     clock.tick(constants.static.FPS)
 pygame.quit
-asdfsadf
