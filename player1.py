@@ -3,9 +3,10 @@ import math
 from mob import Mob
 import constants.dynamic
 import constants.static
+from sprite_groups import SpriteGroups
 
 
-class Player(Mob):
+class Player1(Mob):
     def __init__(self, *sprite_groups):
         super().__init__()
         self.image = constants.dynamic.PLAYER_IMG
@@ -25,22 +26,29 @@ class Player(Mob):
             dist_x = constants.static.SMALL_NONZERO_VALUE
         hypot = math.hypot(dist_x, dist_y)
         angle = math.atan2(dist_y, dist_x)
-        x = math.cos(angle)*(hypot*constants.static.SPEED_SENSITIVITY)**.5
-        y = -math.sin(angle)*(hypot*constants.static.SPEED_SENSITIVITY)**.5
-        if abs(hypot*math.cos(angle)) < 5:
-            x = 0  # center
-        if x > 5 and angle < (.5*pi) and angle > (-.5*pi):
+        x = math.cos(angle)*(hypot*constants.static.SPEED_SENSITIVITY)
+        y = -math.sin(angle)*(hypot*constants.static.SPEED_SENSITIVITY)
+        if x > constants.static.PLAYER_MAX_SPEED and angle < (.5*pi) and angle > (-.5*pi):
             x = constants.static.PLAYER_MAX_SPEED  # right
-        if x < -5 and angle < (-.5*pi) or angle > (.5*pi):
+        if x < -constants.static.PLAYER_MAX_SPEED and angle < (-.5*pi) or angle > (.5*pi):
             x = -constants.static.PLAYER_MAX_SPEED  # left
-        if y > 5 and angle < 0:
+        if y > constants.static.PLAYER_MAX_SPEED and angle < 0:
             y = constants.static.PLAYER_MAX_SPEED  # down
-        if y < -5 and angle > 0:
+        if y < -constants.static.PLAYER_MAX_SPEED and angle > 0:
             y = -constants.static.PLAYER_MAX_SPEED  # up
-        if abs(hypot*math.sin(angle)) < 5 or y<0 and self.rect.top<=constants.static.PLAYER_MAX_HEIGHT:
-            y = 0  # center
+        if y < 0 and self.rect.top <= constants.static.PLAYER_MAX_HEIGHT:
+            y = 0
+        if hypot < constants.static.PLAYER_CENTER_AREA:
+            x = 0
+            y = 0
         self.rect.centerx += x
         self.rect.centery += y
 
-    def update(self):
+    def shoot(self, all, bullets):
+        pass
+
+    def update(self, control_args, sprite_group_args):
         self.move()
+        if "p1_shoot" in control_args:
+            self.shoot(sprite_group_args[SpriteGroups.ALL.value],
+                       sprite_group_args[SpriteGroups.BULLETS.value])

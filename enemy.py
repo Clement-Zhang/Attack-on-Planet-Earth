@@ -36,5 +36,5 @@ class Enemy(Mob):
         self.rect.centerx += travelx
         self.rect.centery += travely
 
-    def update(self):
+    def update(self,control_args,sprite_group_args):
         self.move()
