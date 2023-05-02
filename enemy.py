@@ -4,14 +4,17 @@ import constants.static
 import constants.dynamic
 import random
 
+
 class Enemy(Mob):
     def __init__(self, players, *sprite_groups):
         super().__init__()
         self.players = players
         self.image = constants.dynamic.ENEMY_IMG
         self.rect = self.image.get_rect()
-        self.rect.centerx = random.randrange(25, constants.static.WIDTH-25)
-        self.rect.centery = random.randrange(25, constants.static.HEIGHT-25)
+        self.rect.centerx = random.randrange(
+            constants.static.ENEMY_SPAWN_X_RANGE, constants.static.WIDTH-constants.static.ENEMY_SPAWN_X_RANGE)
+        self.rect.centery = random.randrange(
+            constants.static.ENEMY_SPAWN_Y_MAX, constants.static.ENEMY_SPAWN_Y_MIN)
         for sprite_group in sprite_groups:
             sprite_group.add(self)
 
@@ -32,11 +35,11 @@ class Enemy(Mob):
         dist_y = end[1]-start[1]
         hypot = math.hypot(dist_x, dist_y)
         if hypot == 0:
-            hypot = 10**-6
+            hypot = constants.static.SMALL_NONZERO_VALUE
         unit_x = dist_x/hypot
         unit_y = dist_y/hypot
-        self.rect.centerx += unit_x*4
-        self.rect.centery += unit_y*4
-        
+        self.rect.centerx += unit_x*constants.static.ENEMY_MAX_SPEED
+        self.rect.centery += unit_y*constants.static.ENEMY_MAX_SPEED
+
     def update(self):
         self.move()
