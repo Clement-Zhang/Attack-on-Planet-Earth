@@ -6,7 +6,7 @@ import random
 
 
 class Enemy(Mob):
-    def __init__(self, players, *sprite_groups):
+    def __init__(self, players, spot, *sprite_groups):
         super().__init__()
         self.players = players
         self.image = constants.dynamic.ENEMY_IMG
@@ -17,29 +17,24 @@ class Enemy(Mob):
             constants.static.ENEMY_SPAWN_Y_MAX, constants.static.ENEMY_SPAWN_Y_MIN)
         for sprite_group in sprite_groups:
             sprite_group.add(self)
+        self.spot = spot
 
     def move(self):
-        possible_targets = self.players.sprites()
-        target = possible_targets[0]
-        target_dist = math.hypot(
-            target.rect.centerx-self.rect.centerx, target.rect.centery-self.rect.centery)
-        for i in range(1, len(possible_targets)):
-            dist = math.hypot(possible_targets[i].rect.centerx-self.rect.centerx,
-                              possible_targets[i].rect.centery-self.rect.centery)
-            if dist < target_dist:
-                target_dist = dist
-                target = possible_targets[i]
         start = self.rect.center
-        end = target.rect.center
-        dist_x = end[0]-start[0]
-        dist_y = end[1]-start[1]
+        dist_x = self.spot[0]-start[0]
+        dist_y = self.spot[1]-start[1]
         hypot = math.hypot(dist_x, dist_y)
         if hypot == 0:
             hypot = constants.static.SMALL_NONZERO_VALUE
         unit_x = dist_x/hypot
         unit_y = dist_y/hypot
-        self.rect.centerx += unit_x*constants.static.ENEMY_MAX_SPEED
-        self.rect.centery += unit_y*constants.static.ENEMY_MAX_SPEED
+        travelx = unit_x*constants.static.ENEMY_SPEED
+        travely = unit_y*constants.static.ENEMY_SPEED
+        if hypot <= constants.static.ENEMY_SPEED:
+            travelx = dist_x
+            travely = dist_y
+        self.rect.centerx += travelx
+        self.rect.centery += travely
 
     def update(self):
         self.move()
