@@ -1,5 +1,5 @@
 import math
-from mob import Mob
+from mobs.mob import Mob
 import constants.static
 import constants.dynamic
 import random
@@ -17,9 +17,10 @@ class Enemy(Mob):
             constants.static.ENEMY_SPAWN_Y_MAX, constants.static.ENEMY_SPAWN_Y_MIN)
         for sprite_group in sprite_groups:
             sprite_group.add(self)
-        self.spot = spot
+        self.spot = spot # final destination, corresponds to its spot in the placement matrix
 
     def move(self):
+        """Move the enemy towards its final spot at the speed of ENEMY_SPEED"""
         start = self.rect.center
         dist_x = self.spot[0]-start[0]
         dist_y = self.spot[1]-start[1]
@@ -37,4 +38,5 @@ class Enemy(Mob):
         self.rect.centery += travely
 
     def update(self,control_args,sprite_group_args):
+        """Perform all the actions necessary in one frame"""
         self.move()

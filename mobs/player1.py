@@ -1,6 +1,6 @@
 import pygame
 import math
-from mob import Mob
+from mobs.mob import Mob
 import constants.dynamic
 import constants.static
 from sprite_groups import SpriteGroups
@@ -17,6 +17,7 @@ class Player1(Mob):
             sprite_group.add(self)
 
     def move(self):
+        """Move the player towards the mouse, agario style. Max speed is PLAYER_MAX_SPEED, the player moves proportionate to the distance from the mouse, and the player cannot move more than PLAYER_GAMEPLAY_AREA pixels from the bottom of the screen."""
         start = self.rect.center
         end = pygame.mouse.get_pos()
         dist_x = end[0]-start[0]
@@ -48,6 +49,7 @@ class Player1(Mob):
         pass
 
     def update(self, control_args, sprite_group_args):
+        """Perform all the actions necessary in one frame"""
         self.move()
         if "p1_shoot" in control_args:
             self.shoot(sprite_group_args[SpriteGroups.ALL.value],

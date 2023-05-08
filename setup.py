@@ -5,4 +5,4 @@ screen = pygame.display.set_mode(
     (constants.static.WIDTH, constants.static.HEIGHT))
 pygame.display.set_caption("Attack on Planet Earth")
 clock = pygame.time.Clock()
-running = 1
+running = True
