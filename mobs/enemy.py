@@ -32,6 +32,7 @@ class Enemy(Mob):
         travelx = unit_x*constants.static.ENEMY_SPEED
         travely = unit_y*constants.static.ENEMY_SPEED
         if hypot <= constants.static.ENEMY_SPEED:
+            # if the enemy is close enough to its final spot, just move it there to avoid jittering
             travelx = dist_x
             travely = dist_y
         self.rect.centerx += travelx

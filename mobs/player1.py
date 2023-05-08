@@ -17,10 +17,13 @@ class Player1(Mob):
             sprite_group.add(self)
 
     def move(self):
-        """Move the player towards the mouse, agario style. Max speed is PLAYER_MAX_SPEED, the player moves proportionate to the distance from the mouse, and the player cannot move more than PLAYER_GAMEPLAY_AREA pixels from the bottom of the screen."""
+        """Move the player towards the mouse, agario style.
+        Max speed is PLAYER_MAX_SPEED, the player moves proportionate to the distance from the mouse,
+        and the player cannot move more than PLAYER_GAMEPLAY_AREA pixels from the bottom of the screen."""
         start = self.rect.center
         end = pygame.mouse.get_pos()
         dist_x = end[0]-start[0]
+        # due to angle calculations this calculation must be negated
         dist_y = -(end[1]-start[1])
         pi = math.pi
         if dist_x == 0:
