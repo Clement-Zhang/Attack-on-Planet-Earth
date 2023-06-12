@@ -4,12 +4,14 @@ from mobs.mob import Mob
 import constants.dynamic
 import constants.static
 from sprite_groups import SpriteGroups
+import os
 
 
 class Player1(Mob):
     def __init__(self, *sprite_groups):
         super().__init__()
-        self.image = constants.dynamic.PLAYER_IMG
+        self.image = pygame.transform.scale(pygame.image.load(os.path.join(
+            constants.dynamic.PLAYER_FOLDER, "fly straight.png")).convert(), (constants.static.SPRITE_SIZE, constants.static.SPRITE_SIZE))
         self.rect = self.image.get_rect()
         self.rect.center = (constants.static.WIDTH/2,
                             constants.static.HEIGHT-self.rect.height)

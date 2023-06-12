@@ -3,13 +3,16 @@ from mobs.mob import Mob
 import constants.static
 import constants.dynamic
 import random
+import os
+import pygame
 
 
 class Enemy(Mob):
     def __init__(self, players, spot, *sprite_groups):
         super().__init__()
         self.players = players
-        self.image = constants.dynamic.ENEMY_IMG
+        self.image = pygame.transform.scale(pygame.image.load(os.path.join(
+            constants.dynamic.ENEMY_FOLDER, "fly straight.png")).convert(), (constants.static.SPRITE_SIZE, constants.static.SPRITE_SIZE))
         self.rect = self.image.get_rect()
         self.rect.centerx = random.randrange(
             constants.static.ENEMY_SPAWN_X_RANGE, constants.static.WIDTH-constants.static.ENEMY_SPAWN_X_RANGE)
@@ -17,7 +20,7 @@ class Enemy(Mob):
             constants.static.ENEMY_SPAWN_Y_MAX, constants.static.ENEMY_SPAWN_Y_MIN)
         for sprite_group in sprite_groups:
             sprite_group.add(self)
-        self.spot = spot # final destination, corresponds to its spot in the placement matrix
+        self.spot = spot  # final destination, corresponds to its spot in the placement matrix
 
     def move(self):
         """Move the enemy towards its final spot at the speed of ENEMY_SPEED"""
@@ -38,6 +41,6 @@ class Enemy(Mob):
         self.rect.centerx += travelx
         self.rect.centery += travely
 
-    def update(self,control_args,sprite_group_args):
+    def update(self, control_args, sprite_group_args):
         """Perform all the actions necessary in one frame"""
         self.move()
