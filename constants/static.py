@@ -23,10 +23,10 @@ PLAYER_MAX_HEIGHT = HEIGHT-PLAYER_GAMEPLAY_AREA
 PLAYER_CENTER_AREA = 5
 # blinking is to be done at the start of a wave
 BLINK_TIMES = 3
-BLINK_DURATION = 0.5
+BLINK_DURATION = 500
 # flashing is to be done when the player dies
 FLASH_TIMES = 4
-FLASH_DURATION = 0.1
+FLASH_DURATION = 100
 # scales how many enemies the player can face per wave, range is (0,1]
 DIFFICULTY = .1
 REGULAR_BULLET_SIZE = (3, 10)

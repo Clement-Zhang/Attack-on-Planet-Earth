@@ -10,7 +10,7 @@ import projectiles.regular_bullet
 
 class Player1(Mob):
     def __init__(self, *sprite_groups):
-        super().__init__(*sprite_groups)
+        super().__init__(sprite_group for sprite_group in sprite_groups)
         self.image = pygame.transform.scale(pygame.image.load(os.path.join(
             constants.dynamic.PLAYER_FOLDER, "fly straight.png")).convert(), constants.static.PLAYER_ENEMY_SIZE)
         self.rect = self.image.get_rect()
@@ -51,12 +51,11 @@ class Player1(Mob):
 
     def shoot(self, *sprite_groups):
         projectiles.regular_bullet.RegBullet(
-            -constants.static.REGULAR_BULLET_SPEED,
-            (self.rect.centerx, self.rect.top-constants.static.REGULAR_BULLET_SIZE[1]/2), *sprite_groups)
+            -constants.static.REGULAR_BULLET_SPEED, sprite_groups)
 
     def update(self, control_args, sprite_group_args):
         """Perform all the actions necessary in one frame"""
         self.move()
         if "p1_shoot" in control_args:
             self.shoot(sprite_group_args[SpriteGroups.ALL.value],
-                       sprite_group_args[SpriteGroups.PLAYER_BULLETS.value])
+                       sprite_group_args[SpriteGroups.BULLETS.value])
