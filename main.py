@@ -30,7 +30,7 @@ Player1(players, all)
 
 # set up placement matrices
 # each number in the matrix represents a position on the screen.
-# True means that position is to be occupied by an enemy, False means it is not to be occupied by an enemy. 
+# True means that position is to be occupied by an enemy, False means it is not to be occupied by an enemy.
 # The first matrix represents a full screen of enemies, the rest are randomized proportional to the difficulty.
 placement_matrices = []
 placement_matrix_template = []
@@ -50,10 +50,9 @@ for _ in range(constants.static.RANDOMIZED_MATRIX_COUNT):
                 placement_matrix[i][j] = True
     placement_matrices.append(placement_matrix)
 
-
 while running:
     screen.fill(constants.static.BACKGROUND)
-    control_args = [] # list of commands to be passed to the entities
+    control_args = []  # list of commands to be passed to the entities
     # spawn new wave of enemies at start of game and when player beats a wave
     if len(enemies.sprites()) == 0:
         grid = placement_matrices[random.randrange(len(placement_matrices))]
@@ -75,8 +74,8 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            control_args.append("p1shoot")
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            control_args.append("p1_shoot")
     all.update(control_args, sprite_group_args)
     all.draw(screen)
     pygame.display.flip()

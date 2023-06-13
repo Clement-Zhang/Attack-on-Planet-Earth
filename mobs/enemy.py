@@ -9,17 +9,15 @@ import pygame
 
 class Enemy(Mob):
     def __init__(self, players, spot, *sprite_groups):
-        super().__init__()
+        super().__init__(*sprite_groups)
         self.players = players
         self.image = pygame.transform.scale(pygame.image.load(os.path.join(
-            constants.dynamic.ENEMY_FOLDER, "fly straight.png")).convert(), (constants.static.SPRITE_SIZE, constants.static.SPRITE_SIZE))
+            constants.dynamic.ENEMY_FOLDER, "fly straight.png")).convert(), constants.static.PLAYER_ENEMY_SIZE)
         self.rect = self.image.get_rect()
         self.rect.centerx = random.randrange(
             constants.static.ENEMY_SPAWN_X_RANGE, constants.static.WIDTH-constants.static.ENEMY_SPAWN_X_RANGE)
         self.rect.centery = random.randrange(
             constants.static.ENEMY_SPAWN_Y_MAX, constants.static.ENEMY_SPAWN_Y_MIN)
-        for sprite_group in sprite_groups:
-            sprite_group.add(self)
         self.spot = spot  # final destination, corresponds to its spot in the placement matrix
 
     def move(self):

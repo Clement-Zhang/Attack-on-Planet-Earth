@@ -7,3 +7,4 @@ PLAYER_FOLDER = os.path.join(
     GAME_FOLDER, "custom art/player")
 ENEMY_FOLDER = os.path.join(
     GAME_FOLDER, "custom art/enemy")
+PROJECTILE_FOLDER = os.path.join(GAME_FOLDER, "custom art/projectile")
