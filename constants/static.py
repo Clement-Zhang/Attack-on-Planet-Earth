@@ -1,3 +1,4 @@
+# time is in milliseconds
 WIDTH = 1280
 HEIGHT = 720
 FPS = 30
@@ -16,6 +17,8 @@ ENEMY_SPAWN_AREA = 5
 # how far from the top of the screen the enemy can spawn
 ENEMY_SPAWN_Y_MAX = -PLAYER_ENEMY_SIZE[1] * ENEMY_SPAWN_AREA
 ENEMY_POS_DISPLACEMENT = 40  # minimum gap between enemies
+ENEMY_SHOOT_BASE_TIME = 7000  # how long between enemy shots
+ENEMY_SHOOT_TIME_VARIANCE = .25  # how much the time between enemy shots can vary
 PLAYER_MAX_SPEED = 5
 PLAYER_GAMEPLAY_AREA = 100  # how far from the bottom of the screen the player can move
 PLAYER_MAX_HEIGHT = HEIGHT-PLAYER_GAMEPLAY_AREA

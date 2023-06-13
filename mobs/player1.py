@@ -9,13 +9,14 @@ import projectiles.regular_bullet
 
 
 class Player1(Mob):
-    def __init__(self, *sprite_groups):
+    def __init__(self, bullet_group, *sprite_groups):
         super().__init__(*sprite_groups)
         self.image = pygame.transform.scale(pygame.image.load(os.path.join(
             constants.dynamic.PLAYER_FOLDER, "fly straight.png")).convert(), constants.static.PLAYER_ENEMY_SIZE)
         self.rect = self.image.get_rect()
         self.rect.center = (constants.static.WIDTH/2,
                             constants.static.HEIGHT-self.rect.height)
+        self.bullet_group = bullet_group
 
     def move(self):
         """Move the player towards the mouse, agario style.
@@ -49,14 +50,13 @@ class Player1(Mob):
         self.rect.centerx += x
         self.rect.centery += y
 
-    def shoot(self, *sprite_groups):
+    def shoot(self):
         projectiles.regular_bullet.RegBullet(
             -constants.static.REGULAR_BULLET_SPEED,
-            (self.rect.centerx, self.rect.top-constants.static.REGULAR_BULLET_SIZE[1]/2), *sprite_groups)
+            (self.rect.centerx, self.rect.top - constants.static.REGULAR_BULLET_SIZE[1] / 2), self.bullet_group)
 
     def update(self, control_args, sprite_group_args):
         """Perform all the actions necessary in one frame"""
         self.move()
         if "p1_shoot" in control_args:
-            self.shoot(sprite_group_args[SpriteGroups.ALL.value],
-                       sprite_group_args[SpriteGroups.PLAYER_BULLETS.value])
+            self.shoot()

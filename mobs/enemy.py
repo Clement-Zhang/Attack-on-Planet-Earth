@@ -5,12 +5,13 @@ import constants.dynamic
 import random
 import os
 import pygame
+import projectiles.regular_bullet
 
 
 class Enemy(Mob):
-    def __init__(self, players, spot, *sprite_groups):
+    def __init__(self, bullet_group, spot, *sprite_groups):
         super().__init__(*sprite_groups)
-        self.players = players
+        self.bullet_group = bullet_group
         self.image = pygame.transform.scale(pygame.image.load(os.path.join(
             constants.dynamic.ENEMY_FOLDER, "fly straight.png")).convert(), constants.static.PLAYER_ENEMY_SIZE)
         self.rect = self.image.get_rect()
@@ -38,6 +39,12 @@ class Enemy(Mob):
             travely = dist_y
         self.rect.centerx += travelx
         self.rect.centery += travely
+
+    def shoot(self):
+        """Enemy shooting is to be done in a centralized manner"""
+        projectiles.regular_bullet.RegBullet(
+            constants.static.REGULAR_BULLET_SPEED,
+            (self.rect.centerx, self.rect.bottom + constants.static.REGULAR_BULLET_SIZE[1] / 2), self.bullet_group)
 
     def update(self, control_args, sprite_group_args):
         """Perform all the actions necessary in one frame"""
