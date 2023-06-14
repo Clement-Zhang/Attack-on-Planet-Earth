@@ -1,11 +1,11 @@
 import math
-from mobs.mob import Mob
-import constants.static
-import constants.dynamic
+from mob.mob import Mob
+import constant.static
+import constant.dynamic
 import random
 import os
 import pygame
-import projectiles.regular_bullet
+import projectile.regular_bullet
 
 
 class Enemy(Mob):
@@ -13,12 +13,12 @@ class Enemy(Mob):
         super().__init__(*sprite_groups)
         self.bullet_group = bullet_group
         self.image = pygame.transform.scale(pygame.image.load(os.path.join(
-            constants.dynamic.ENEMY_FOLDER, "fly straight.png")).convert(), constants.static.PLAYER_ENEMY_SIZE)
+            constant.dynamic.ENEMY_FOLDER, "fly straight.png")).convert(), constant.static.PLAYER_ENEMY_SIZE)
         self.rect = self.image.get_rect()
         self.rect.centerx = random.randrange(
-            constants.static.ENEMY_SPAWN_X_RANGE, constants.static.WIDTH-constants.static.ENEMY_SPAWN_X_RANGE)
+            constant.static.ENEMY_SPAWN_X_RANGE, constant.static.WIDTH-constant.static.ENEMY_SPAWN_X_RANGE)
         self.rect.centery = random.randrange(
-            constants.static.ENEMY_SPAWN_Y_MAX, constants.static.ENEMY_SPAWN_Y_MIN)
+            constant.static.ENEMY_SPAWN_Y_MAX, constant.static.ENEMY_SPAWN_Y_MIN)
         self.spot = spot  # final destination, corresponds to its spot in the placement matrix
 
     def move(self):
@@ -28,12 +28,12 @@ class Enemy(Mob):
         dist_y = self.spot[1]-start[1]
         hypot = math.hypot(dist_x, dist_y)
         if hypot == 0:
-            hypot = constants.static.SMALL_NONZERO_VALUE
+            hypot = constant.static.SMALL_NONZERO_VALUE
         unit_x = dist_x/hypot
         unit_y = dist_y/hypot
-        travelx = unit_x*constants.static.ENEMY_SPEED
-        travely = unit_y*constants.static.ENEMY_SPEED
-        if hypot <= constants.static.ENEMY_SPEED:
+        travelx = unit_x*constant.static.ENEMY_SPEED
+        travely = unit_y*constant.static.ENEMY_SPEED
+        if hypot <= constant.static.ENEMY_SPEED:
             # if the enemy is close enough to its final spot, just move it there to avoid jittering
             travelx = dist_x
             travely = dist_y
@@ -42,9 +42,9 @@ class Enemy(Mob):
 
     def shoot(self):
         """Enemy shooting is to be done in a centralized manner"""
-        projectiles.regular_bullet.RegBullet(
-            constants.static.REGULAR_BULLET_SPEED,
-            (self.rect.centerx, self.rect.bottom + constants.static.REGULAR_BULLET_SIZE[1] / 2), self.bullet_group)
+        projectile.regular_bullet.RegBullet(
+            constant.static.REGULAR_BULLET_SPEED,
+            (self.rect.centerx, self.rect.bottom + constant.static.REGULAR_BULLET_SIZE[1] / 2), self.bullet_group)
 
     def update(self, control_args, sprite_group_args):
         """Perform all the actions necessary in one frame"""
