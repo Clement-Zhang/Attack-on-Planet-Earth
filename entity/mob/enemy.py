@@ -5,6 +5,7 @@ import data.var
 import random
 import os
 import pygame
+from entity.projectile.regular_bullet import RegBullet
 
 
 class Enemy(Mob):
@@ -39,8 +40,9 @@ class Enemy(Mob):
         self.rect.centery += travely
 
     def shoot(self):
-        """Due to circular import this function can only return the spawn spot"""
-        return (self.rect.centerx, self.rect.bottom + data.constant.REGULAR_BULLET_SIZE[1] / 2)
+        """Spawn a bullet for event handler to pass to collection"""
+        return RegBullet(data.constant.REGULAR_BULLET_SPEED, (self.rect.centerx,
+                                                              self.rect.bottom + data.constant.REGULAR_BULLET_SIZE[1] / 2))
 
     def update(self):
         """Perform all the actions necessary in one frame"""

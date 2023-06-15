@@ -1,4 +1,4 @@
-from projectile.projectile import Projectile
+from entity.projectile.projectile import Projectile
 import os
 import pygame
 import data.constant

@@ -8,9 +8,10 @@ from mechanics.collisions import Collisions
 from util import Util
 from collection import Collection
 import math
+from entity.mob.player1 import Player1
 
 
-Collection.add_player()
+Collection.add_player(Player1())
 pygame.time.set_timer(data.var.enemy_shoot, random.randrange(int(data.constant.ENEMY_SHOOT_BASE_TIME * (
     1 - data.constant.ENEMY_SHOOT_TIME_VARIANCE)), math.ceil(data.constant.ENEMY_SHOOT_BASE_TIME * (1 + data.constant.ENEMY_SHOOT_TIME_VARIANCE))), 1)
 

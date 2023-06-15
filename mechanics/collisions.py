@@ -1,7 +1,6 @@
 import pygame
 from collection import Collection
 from util import Util
-from mechanics.events import Events
 
 
 class Collisions():

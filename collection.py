@@ -1,36 +1,27 @@
-import pygame
 from enums.sprite_group import SpriteGroup
 from enums.player import Player
-from entity.mob.enemy import Enemy
-from entity.mob.player1 import Player1
-from projectile.regular_bullet import RegBullet
 import data.constant
 import data.var
 
 
 class Collection():
-    """Everything to do with managing CRU of sprites.
-    Deletion is done by the sprites themselves to make things easier."""
+    """Manage sprite groups"""
 
-    def add_enemy(spot):
-        e = Enemy(spot)
-        Collection.get_enemies().add(e)
-        Collection.get_all().add(e)
+    def add_enemy(enemy):
+        Collection.get_enemies().add(enemy)
+        Collection.get_all().add(enemy)
 
-    def add_player():
-        p = Player1()
-        Collection.get_players().add(p)
-        Collection.get_all().add(p)
+    def add_player(player):
+        Collection.get_players().add(player)
+        Collection.get_all().add(player)
 
-    def add_enemy_bullet(spot):
-        b = RegBullet(data.constant.REGULAR_BULLET_SPEED, spot)
-        Collection.get_enemy_bullets().add(b)
-        Collection.get_all().add(b)
+    def add_enemy_bullet(enemy_bullet):
+        Collection.get_enemy_bullets().add(enemy_bullet)
+        Collection.get_all().add(enemy_bullet)
 
-    def add_player_bullet(spot):
-        b = RegBullet(-data.constant.REGULAR_BULLET_SPEED, spot)
-        Collection.get_player_bullets().add(b)
-        Collection.get_all().add(b)
+    def add_player_bullet(player_bullet):
+        Collection.get_player_bullets().add(player_bullet)
+        Collection.get_all().add(player_bullet)
 
     # read
 

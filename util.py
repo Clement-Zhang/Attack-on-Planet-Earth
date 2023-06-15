@@ -5,6 +5,7 @@ import pygame
 import data.constant
 import data.var
 import random
+from entity.mob.enemy import Enemy
 
 
 class Util():
@@ -38,7 +39,7 @@ class Util():
         for i in range(len(grid)):
             for j in range(len(grid[i])):
                 if grid[i][j]:
-                    Collection.add_enemy(
-                        ((j+1)*data.constant.ENEMY_POS_DISPLACEMENT, (i+1)*data.constant.ENEMY_POS_DISPLACEMENT))
+                    Collection.add_enemy(Enemy(
+                        ((j+1)*data.constant.ENEMY_POS_DISPLACEMENT, (i+1)*data.constant.ENEMY_POS_DISPLACEMENT)))
         # blink to signal the start of a new wave
         Util.blink()

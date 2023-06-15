@@ -4,6 +4,7 @@ from entity.mob.mob import Mob
 import data.constant
 import data.var
 import os
+from entity.projectile.regular_bullet import RegBullet
 
 
 class Player1(Mob):
@@ -48,7 +49,9 @@ class Player1(Mob):
         self.rect.centery += y
 
     def shoot(self):
-        return ((self.rect.centerx, self.rect.top - data.constant.REGULAR_BULLET_SIZE[1] / 2))
+        """Spawn a bullet for event handler to pass to collection"""
+        return RegBullet(-data.constant.REGULAR_BULLET_SPEED, (self.rect.centerx,
+                                                               self.rect.top - data.constant.REGULAR_BULLET_SIZE[1] / 2))
 
     def update(self):
         """Perform all the actions necessary in one frame"""
