@@ -7,24 +7,19 @@ from mechanics.events import Events
 class Collisions():
     """Different ways entities can interact with each other"""
 
-    def __init__(self):
-        self.collection = Collection()
-        self.util = Util()
-        self.events = Events()
-
-    def player_shoot_enemy(self):
+    def player_shoot_enemy():
         pygame.sprite.groupcollide(
-            self.collection.get_enemies(), self.collection.get_player_bullets(), True, True)
-        if len(self.collection.get_enemies()) == 0:
-            self.util.new_wave()
+            Collection.get_enemies(), Collection.get_player_bullets(), True, True)
+        if len(Collection.get_enemies()) == 0:
+            Util.new_wave()
 
-    def enemy_shoot_player(self):
+    def enemy_shoot_player():
         if pygame.sprite.groupcollide(
-                self.collection.get_players(), self.collection.get_enemy_bullets(), True, True):
-            self.util.flash()
-        if len(self.collection.get_players()) == 0:
+                Collection.get_players(), Collection.get_enemy_bullets(), True, True):
+            Util.flash()
+        if len(Collection.get_players()) == 0:
             pygame.event.post(pygame.event.Event(pygame.QUIT))
 
-    def everything(self):
-        self.player_shoot_enemy()
-        self.enemy_shoot_player()
+    def everything():
+        Collisions.player_shoot_enemy()
+        Collisions.enemy_shoot_player()

@@ -10,18 +10,13 @@ RANDOMIZED_MATRIX_COUNT = 5  # number of randomized placement matrices to genera
 PLAYER_ENEMY_SIZE = (30, 30)
 ENEMY_SPEED = 2
 ENEMY_SPAWN_X_RANGE = 25  # how far from the sides of the screen the enemy can spawn
-# how far from the top of the screen the enemy must spawn
-ENEMY_SPAWN_Y_MIN = -PLAYER_ENEMY_SIZE[1]
 # the enemy can spawn up to this many times the sprite size above the top of the screen
 ENEMY_SPAWN_AREA = 5
-# how far from the top of the screen the enemy can spawn
-ENEMY_SPAWN_Y_MAX = -PLAYER_ENEMY_SIZE[1] * ENEMY_SPAWN_AREA
 ENEMY_POS_DISPLACEMENT = 40  # minimum gap between enemies
 ENEMY_SHOOT_BASE_TIME = 1000  # how long between enemy shots
 ENEMY_SHOOT_TIME_VARIANCE = .25  # how much the time between enemy shots can vary
 PLAYER_MAX_SPEED = 5
 PLAYER_GAMEPLAY_AREA = 100  # how far from the bottom of the screen the player can move
-PLAYER_MAX_HEIGHT = HEIGHT-PLAYER_GAMEPLAY_AREA
 # in agario style movement, this is where you put the cursor to avoid moving anywhere
 PLAYER_CENTER_AREA = 5
 # blinking is to be done at the start of a wave

@@ -1,8 +1,8 @@
 import pygame
-import constant.static
+import data.constant
 pygame.init()
 screen = pygame.display.set_mode(
-    (constant.static.WIDTH, constant.static.HEIGHT))
+    (data.constant.WIDTH, data.constant.HEIGHT))
 pygame.display.set_caption("Attack on Planet Earth")
 clock = pygame.time.Clock()
 running = True

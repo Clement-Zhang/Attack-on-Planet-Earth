@@ -1,8 +1,8 @@
 from projectile.projectile import Projectile
 import os
 import pygame
-import constant.static
-import constant.dynamic
+import data.constant
+import data.var
 
 
 class RegBullet(Projectile):
@@ -11,7 +11,7 @@ class RegBullet(Projectile):
     def __init__(self, start_speed, start_location):
         super().__init__()
         bullet_folder = os.path.join(
-            constant.dynamic.PROJECTILE_FOLDER, "regular bullet")
+            data.var.projectile_folder, "regular bullet")
         if start_speed > 0:
             img = pygame.image.load(os.path.join(
                 bullet_folder, "bullet down.png")).convert()
@@ -19,7 +19,7 @@ class RegBullet(Projectile):
             img = pygame.image.load(os.path.join(
                 bullet_folder, "bullet up.png")).convert()
         self.image = pygame.transform.scale(
-            img, constant.static.REGULAR_BULLET_SIZE)
+            img, data.constant.REGULAR_BULLET_SIZE)
         self.rect = self.image.get_rect()
         self.speed = start_speed
         self.rect.center = start_location
@@ -30,7 +30,7 @@ class RegBullet(Projectile):
 
     def despawn(self):
         """Despawn the bullet if it's in a useless location"""
-        if self.rect.bottom < constant.static.ENEMY_SPAWN_Y_MAX or self.rect.top > constant.static.HEIGHT:
+        if self.rect.bottom < data.var.enemy_spawn_y_max or self.rect.top > data.constant.HEIGHT:
             self.kill()
 
     def update(self):
