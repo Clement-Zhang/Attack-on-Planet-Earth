@@ -1,18 +1,17 @@
-from projectiles.projectile import Projectile
+from projectile.projectile import Projectile
 import os
 import pygame
-import constants.static
-import constants.dynamic
-from sprite_groups import SpriteGroups
+import constant.static
+import constant.dynamic
 
 
 class RegBullet(Projectile):
     """Projectile fired by the default gun"""
 
-    def __init__(self, start_speed, start_location, *sprite_groups):
-        super().__init__(*sprite_groups)
+    def __init__(self, start_speed, start_location):
+        super().__init__()
         bullet_folder = os.path.join(
-            constants.dynamic.PROJECTILE_FOLDER, "regular bullet")
+            constant.dynamic.PROJECTILE_FOLDER, "regular bullet")
         if start_speed > 0:
             img = pygame.image.load(os.path.join(
                 bullet_folder, "bullet down.png")).convert()
@@ -20,7 +19,7 @@ class RegBullet(Projectile):
             img = pygame.image.load(os.path.join(
                 bullet_folder, "bullet up.png")).convert()
         self.image = pygame.transform.scale(
-            img, constants.static.REGULAR_BULLET_SIZE)
+            img, constant.static.REGULAR_BULLET_SIZE)
         self.rect = self.image.get_rect()
         self.speed = start_speed
         self.rect.center = start_location
@@ -31,10 +30,10 @@ class RegBullet(Projectile):
 
     def despawn(self):
         """Despawn the bullet if it's in a useless location"""
-        if self.rect.bottom < constants.static.ENEMY_SPAWN_Y_MAX or self.rect.top > constants.static.HEIGHT:
+        if self.rect.bottom < constant.static.ENEMY_SPAWN_Y_MAX or self.rect.top > constant.static.HEIGHT:
             self.kill()
 
-    def update(self, control_args, sprite_group_args):
+    def update(self):
         """Perform all the actions necessary in one frame"""
         self.despawn()
         self.animate()

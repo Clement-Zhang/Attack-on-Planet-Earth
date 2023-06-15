@@ -1,6 +1,6 @@
 import os
 import pygame
-import constants.static
+import constant.static
 
 GAME_FOLDER = os.path.join(os.path.dirname(__file__), '..')
 PLAYER_FOLDER = os.path.join(
