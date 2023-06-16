@@ -34,9 +34,6 @@ class Collection():
     def get_enemies():
         return data.var.sprite_groups[SpriteGroup.ENEMIES.value]
 
-    def get_enemies_length():
-        return len(Collection.get_enemies())
-
     def get_player_bullets():
         return data.var.sprite_groups[SpriteGroup.PLAYER_BULLETS.value]
 

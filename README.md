@@ -10,4 +10,7 @@ Planned features:
   storyline
   slightly improved graphics
 
+Documentation, including the instructions, is here:
+https://drive.google.com/drive/folders/1E3Va5pCEOEHWT3eAthB41L210ZV5v3WZ?usp=sharing
+
 Developer: Clement Zhang

@@ -12,7 +12,7 @@ class Events():
         for event in event_queue:
             if event.type == pygame.QUIT:
                 quit()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+            elif event.type == pygame.MOUSEBUTTONDOWN and len(Collection.get_player_bullets()) < data.constant.PLAYER_BULLET_LIMIT:
                 Collection.add_player_bullet(Collection.get_player1().shoot())
             elif event.type == data.var.enemy_shoot:
                 if len(Collection.get_enemies()) > 0:

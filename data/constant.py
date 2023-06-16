@@ -21,6 +21,7 @@ PLAYER_MAX_SPEED = 5
 PLAYER_GAMEPLAY_AREA = 100  # how far from the bottom of the screen the player can move
 # in agario style movement, this is where you put the cursor to avoid moving anywhere
 PLAYER_CENTER_AREA = 5
+PLAYER_BULLET_LIMIT = 1  # how many bullets the player can have on screen at once
 # blinking is to be done at the start of a wave
 BLINK_TIMES = 3
 BLINK_DURATION = 500
