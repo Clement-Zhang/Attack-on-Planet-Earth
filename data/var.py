@@ -5,12 +5,12 @@ from enums.sprite_group import SpriteGroup
 import copy
 import random
 
-game_folder = os.path.join(os.path.dirname(__file__), '..')
+game_folder = os.path.dirname(__file__)
 player_folder = os.path.join(
-    game_folder, "art/player")
+    game_folder, "assets/art/player")
 enemy_folder = os.path.join(
-    game_folder, "art/enemy")
-projectile_folder = os.path.join(game_folder, "art/projectile")
+    game_folder, "assets/art/enemy")
+projectile_folder = os.path.join(game_folder, "assets/art/projectile")
 # how far from the top of the screen the enemy must spawn
 enemy_spawn_y_min = -PLAYER_ENEMY_SIZE[1]
 # how far from the top of the screen the enemy can spawn
