@@ -3,6 +3,8 @@ the well known arcade game.
 AoPE is built using Python with heavy usage of the Pygame library.
 AoPE is a Free to Develop, Free to Play game.
 
+Play by running AOPE_gameplay.py
+
 Planned features:
   extra lives
   powerups
