@@ -35,3 +35,7 @@ for _ in range(RANDOMIZED_MATRIX_COUNT):
             if random.randrange(int(1 / DIFFICULTY)) == 0:
                 placement_matrix[i][j] = True
     placement_matrices.append(placement_matrix)
+score = 0
+font_name = pygame.font.match_font('Comic Sans MS')
+font_size = 12
+font_colour = WHITE

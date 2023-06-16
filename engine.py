@@ -21,6 +21,7 @@ while running:
     Collisions.everything()
     Collection.update()
     Collection.draw(screen)
+    Util.display_score(screen)
     pygame.display.flip()
     clock.tick(data.constant.FPS)
 pygame.quit

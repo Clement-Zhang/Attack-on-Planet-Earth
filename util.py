@@ -43,3 +43,14 @@ class Util():
                         ((j+1)*data.constant.ENEMY_POS_DISPLACEMENT, (i+1)*data.constant.ENEMY_POS_DISPLACEMENT)))
         # blink to signal the start of a new wave
         Util.blink()
+
+    def write(txt, spot, screen):
+        font = pygame.font.Font(data.var.font_name, data.var.font_size)
+        text = font.render(txt, data.constant.ANTI_ALIASING,
+                           data.var.font_colour)
+        text_rect = text.get_rect()
+        text_rect.topleft = spot
+        screen.blit(text, text_rect)
+
+    def display_score(screen):
+        Util.write("Score: "+str(data.var.score), (0, 0), screen)

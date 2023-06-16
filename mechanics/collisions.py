@@ -1,14 +1,17 @@
 import pygame
 from collection import Collection
 from util import Util
+import data.var
 
 
 class Collisions():
     """Different ways entities can interact with each other"""
 
     def player_shoot_enemy():
-        pygame.sprite.groupcollide(
+        killed = pygame.sprite.groupcollide(
             Collection.get_enemies(), Collection.get_player_bullets(), True, True)
+        if killed:
+            data.var.score += len(killed)
         if len(Collection.get_enemies()) == 0:
             Util.new_wave()
 
