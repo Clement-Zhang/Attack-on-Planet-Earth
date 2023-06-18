@@ -5,7 +5,7 @@ from enums.sprite_group import SpriteGroup
 import copy
 import random
 
-game_folder = os.path.join(os.path.dirname(__file__), '..')
+game_folder = os.getcwd()
 player_folder = os.path.join(
     game_folder, "assets/art/player")
 enemy_folder = os.path.join(
