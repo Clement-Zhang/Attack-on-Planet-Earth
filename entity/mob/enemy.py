@@ -6,6 +6,7 @@ import random
 import os
 import pygame
 from entity.projectile.regular_bullet import RegBullet
+from collection import Collection
 
 
 class Enemy(Mob):
@@ -41,8 +42,8 @@ class Enemy(Mob):
 
     def shoot(self):
         """Spawn a bullet for event handler to pass to collection"""
-        return RegBullet(data.constant.REGULAR_BULLET_SPEED, (self.rect.centerx,
-                                                              self.rect.bottom + data.constant.REGULAR_BULLET_SIZE[1] / 2))
+        Collection.add_enemy_bullet(RegBullet(data.constant.REGULAR_BULLET_SPEED, (self.rect.centerx,
+                                                                                   self.rect.bottom + data.constant.REGULAR_BULLET_SIZE[1] / 2)))
 
     def update(self):
         """Perform all the actions necessary in one frame"""

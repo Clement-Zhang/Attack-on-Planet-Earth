@@ -13,11 +13,10 @@ class Events():
             if event.type == pygame.QUIT:
                 quit()
             elif event.type == pygame.MOUSEBUTTONDOWN and len(Collection.get_player_bullets()) < data.constant.PLAYER_BULLET_LIMIT:
-                Collection.add_player_bullet(Collection.get_player1().shoot())
+                Collection.get_player1().shoot()
             elif event.type == data.var.enemy_shoot:
                 if len(Collection.get_enemies()) > 0:
-                    Collection.add_enemy_bullet(random.choice(
-                        Collection.get_enemies().sprites()).shoot())
+                    random.choice(Collection.get_enemies().sprites()).shoot()
                 pygame.time.set_timer(data.var.enemy_shoot, random.randrange(data.constant.ENEMY_SHOOT_BASE_TIME * (
                     1 - data.constant.ENEMY_SHOOT_TIME_VARIANCE), data.constant.ENEMY_SHOOT_BASE_TIME * (1 + data.constant.ENEMY_SHOOT_TIME_VARIANCE)), 1)
 

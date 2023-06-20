@@ -1,8 +1,11 @@
-from entity.entity import Entity
+import pygame
 
 
-class Mob(Entity):
+class Mob(pygame.sprite.Sprite):
     """A mob is a moving entity"""
+
+    def __init__(self):
+        super().__init__()
 
     def move(self):
         pass
