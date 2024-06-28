@@ -6,6 +6,7 @@ AoPE is a Free to Develop, Free to Play game.
 Download the whole thing by going to Code->Download ZIP
 Play by going to dist->AoPE_gameplay and running AoPE_gameplay.exe
 Available for Windows.
+Note: I am aware that there is a distribution issue, I am working on it
 
 Planned features:
   extra lives
