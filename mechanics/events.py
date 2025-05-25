@@ -17,8 +17,8 @@ class Events():
             elif event.type == data.var.enemy_shoot:
                 if len(Collection.get_enemies()) > 0:
                     random.choice(Collection.get_enemies().sprites()).shoot()
-                pygame.time.set_timer(data.var.enemy_shoot, random.randrange(data.constant.ENEMY_SHOOT_BASE_TIME * (
-                    1 - data.constant.ENEMY_SHOOT_TIME_VARIANCE), data.constant.ENEMY_SHOOT_BASE_TIME * (1 + data.constant.ENEMY_SHOOT_TIME_VARIANCE)), 1)
+                pygame.time.set_timer(data.var.enemy_shoot, random.randrange(int(data.constant.ENEMY_SHOOT_BASE_TIME * (
+                    1 - data.constant.ENEMY_SHOOT_TIME_VARIANCE)), int(data.constant.ENEMY_SHOOT_BASE_TIME * (1 + data.constant.ENEMY_SHOOT_TIME_VARIANCE))), 1)
 
     def alternating(event_queue):
         for event in event_queue:
