@@ -3,10 +3,10 @@ the well known arcade game.
 AoPE is built using Python with heavy usage of the Pygame library.
 AoPE is a Free to Develop, Free to Play game.
 
-Download the whole thing by going to Code->Download ZIP
-Play by going to dist->AoPE_gameplay and running AoPE_gameplay.exe
-Available for Windows.
-Note: I am aware that there is a distribution issue, I am working on it
+I have tried to convert the interpreted Python code
+into a runnable exe file, but that has failed.
+As such, future attempts to distribute the game to a wider
+audience will be done by rewriting the whole game in JavaScript.
 
 Planned features:
   extra lives

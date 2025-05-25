@@ -12,12 +12,10 @@ class RegBullet(Projectile):
         super().__init__()
         bullet_folder = os.path.join(
             data.var.projectile_folder, "regular bullet")
+        img = pygame.image.load(os.path.join(
+            bullet_folder, "bullet up.png")).convert()
         if start_speed > 0:
-            img = pygame.image.load(os.path.join(
-                bullet_folder, "bullet down.png")).convert()
-        elif start_speed < 0:
-            img = pygame.image.load(os.path.join(
-                bullet_folder, "bullet up.png")).convert()
+            img = pygame.transform.rotate(img, 180)
         self.image = pygame.transform.scale(
             img, data.constant.REGULAR_BULLET_SIZE)
         self.rect = self.image.get_rect()

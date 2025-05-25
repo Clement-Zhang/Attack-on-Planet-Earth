@@ -6,10 +6,8 @@ import copy
 import random
 
 game_folder = os.getcwd()
-player_folder = os.path.join(
-    game_folder, "assets/art/player")
-enemy_folder = os.path.join(
-    game_folder, "assets/art/enemy")
+plane_folder = os.path.join(
+    game_folder, "assets/art/plane")
 projectile_folder = os.path.join(game_folder, "assets/art/projectile")
 # how far from the top of the screen the enemy must spawn
 enemy_spawn_y_min = -PLAYER_ENEMY_SIZE[1]

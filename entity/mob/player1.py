@@ -12,7 +12,7 @@ class Player1(Mob):
     def __init__(self):
         super().__init__()
         self.image = pygame.transform.scale(pygame.image.load(os.path.join(
-            data.var.player_folder, "fly straight.png")).convert(), data.constant.PLAYER_ENEMY_SIZE)
+            data.var.plane_folder, "fly straight.png")).convert(), data.constant.PLAYER_ENEMY_SIZE)
         self.rect = self.image.get_rect()
         self.rect.center = (data.constant.WIDTH / 2,
                             data.constant.HEIGHT - self.rect.height)
