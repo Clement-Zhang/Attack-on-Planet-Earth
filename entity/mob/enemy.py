@@ -12,8 +12,7 @@ from collection import Collection
 class Enemy(Mob):
     def __init__(self, spot):
         super().__init__()
-        self.image = pygame.transform.flip(pygame.transform.scale(pygame.image.load(os.path.join(
-            data.var.plane_folder, "fly straight.png")).convert(), data.constant.PLAYER_ENEMY_SIZE), False, True)
+        self.image = data.var.plane_down
         self.rect = self.image.get_rect()
         self.rect.centerx = random.randrange(
             data.constant.ENEMY_SPAWN_X_RANGE, data.constant.WIDTH-data.constant.ENEMY_SPAWN_X_RANGE)

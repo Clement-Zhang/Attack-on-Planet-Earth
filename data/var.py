@@ -5,10 +5,18 @@ from enums.sprite_group import SpriteGroup
 import copy
 import random
 
+# store exactly one copy of each asset
 game_folder = os.getcwd()
 plane_folder = os.path.join(
     game_folder, "assets/art/plane")
-projectile_folder = os.path.join(game_folder, "assets/art/projectile")
+bullet_folder = os.path.join(
+    game_folder, "assets/art/projectile/regular bullet")
+plane_up = pygame.transform.scale(pygame.image.load(os.path.join(
+    plane_folder, "fly straight.png")).convert(), PLAYER_ENEMY_SIZE)
+plane_down = pygame.transform.flip(plane_up, False, True)
+bullet_up = pygame.transform.scale(pygame.image.load(os.path.join(
+    bullet_folder, "bullet up.png")).convert(), REGULAR_BULLET_SIZE)
+bullet_down = pygame.transform.flip(bullet_up, False, True)
 # how far from the top of the screen the enemy must spawn
 enemy_spawn_y_min = -PLAYER_ENEMY_SIZE[1]
 # how far from the top of the screen the enemy can spawn
